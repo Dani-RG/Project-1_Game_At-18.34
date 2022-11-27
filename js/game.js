@@ -3,6 +3,7 @@ class Game{
     this.ctx = context;
     this.avatar = new Player (470, 500, 70, 70);
     this.door = new Door (300, 0, 400, 300);
+    this.clock = new Clock (100, 40);
   }
 
   _drawAvatar() {
@@ -29,9 +30,15 @@ class Game{
     this.ctx.drawImage(this.door.image, this.door.x, this.door.y, this.door.width, this.door.height);
   }
 
+  _drawClock() {
+    this.ctx.font = '30px Courier New';
+    this.ctx.fillText(this.clock.time, this.clock.x, this.clock.y, this.clock.width, this.clock.height);
+  }
+
   _update() {
     this._drawAvatar();
     this._drawDoor();
+    this._drawClock();
     window.requestAnimationFrame(() => this._update());
   }
 
