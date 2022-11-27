@@ -1,17 +1,23 @@
 class Game{
   constructor(context) {
     this.ctx = context;
+    this.avatar = new Player (470, 500, 70, 70);
+    this.door = new Door (300, 0, 400, 300);
+  }
+
+  _drawAvatar() {
+    this.ctx.drawImage(this.avatar.image, this.avatar.x, this.avatar.y, this.avatar.width, this.avatar.height);
   }
 
   _assignControls() {
-    // Controles del teclado
+    // Keyboard Controls:
     document.addEventListener('keydown', (event) => {
       switch (event.code) {
         case 'ArrowLeft':
-          this.meatball.moveLeft();
+          this.avatar.moveLeft();
           break;
         case 'ArrowRight':
-          this.meatball.moveRight();
+          this.avatar.moveRight();
           break;
         default:
           break;
@@ -19,7 +25,13 @@ class Game{
     });
   }
 
+  _drawDoor() {
+    this.ctx.drawImage(this.door.image, this.door.x, this.door.y, this.door.width, this.door.height);
+  }
+
   _update() {
+    this._drawAvatar();
+    this._drawDoor();
     window.requestAnimationFrame(() => this._update());
   }
 
@@ -28,3 +40,4 @@ class Game{
     this._update();
   }
 }
+

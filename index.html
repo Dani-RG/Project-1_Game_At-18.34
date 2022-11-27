@@ -5,27 +5,40 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css"/>
-  <title>Meatball</title>
+  <title>Game: At 18:34!</title>
 </head>
 <body>
 
-  <div id="start-page">
+  <div id="welcome-page">
     <main>
-      <h1>Title of the game</h1>
-      <p>Instructions / Description</p>
-      <button id="start">START</button>
+      <h1>At 18:34!</h1>
+      <h2>Description:</h2>
+      <p>The game will consist of helping your friend from Ironhack 
+        to get to the classroom at exactly 18:34<br>  
+        So you as the player can support him to cross the door at the time described, 
+        not a minute before, not a minute after!</p>
+        <h2>Instructions:</h2>
+        <p>The minutes in the clock pass as fast as seconds!<br> 
+          Your Ironfriend moves forward by itself 
+          so you can only indicates him the directions with your keyboard arrows.
+        </p>
+      <button id="start">Start</button>
     </main>
   </div>
 
     <div id="lose-page">
     <main>
-      <h1>YOU LOSE SUCKER</h1>
+      <h1>Try again!</h1>
     </main>
   </div>
 
   <canvas id="canvas" width="1000" height="600" class="hidden"></canvas>
 
+  <script src="js/assets.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/door.js"></script>
   <script src="js/game.js"></script>
   <script src="js/scripts.js"></script>
 </body>
 </html>
+

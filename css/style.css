@@ -1,11 +1,47 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+  color: white;
+  background-color: rgb(25, 33, 41);
+  border-style: solid;
+  border-width: 3px;
+  padding: 5px;
+  /*border-color: white;*/
+  /*width: 500px;*/
+  margin-bottom: 80px;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+p {
+  color: rgb(25, 33, 41);
+  width: 700px;
+  margin-bottom: 50px;
 }
 
 /* Basic styles, change according to your style */
 
-#start-page,
+#welcome-page {
+  height: 600px;
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  border: 1px solid black;
+  margin-top: 30px;
+  background-color: rgb(67, 163, 230);
+}
+
 #lose-page {
   height: 600px;
   width: 1000px;
@@ -17,6 +53,7 @@
   margin: 0 auto;
   border: 1px solid black;
   margin-top: 30px;
+  background-color: rgb(230, 164, 67);
 }
 
 #lose-page {
@@ -29,6 +66,7 @@ canvas {
   margin: 0 auto;
   margin-top: 30px;
   margin-bottom: 50px;
+  background-image: url('../img/floor.png');
 }
 
 /* Auxiliar classes */
