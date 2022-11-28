@@ -15,12 +15,12 @@ function randomMinute(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-let minutes = randomMinute(39, 45);
+let minutes = randomMinute(25, 34);
 
 let time = `18:${minutes}`;
 
-function countdown (){
-    minutes --;
+function crono (){
+    minutes ++;
     console.log(minutes);
     time = `18:${minutes}`;
     if (minutes === 34) {
@@ -28,7 +28,7 @@ function countdown (){
     }
 }
 
-const intervalID = setInterval (countdown, 1000);
+const intervalID = setInterval (crono, 1000);
 
 
 
