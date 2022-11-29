@@ -14,6 +14,8 @@ class Game{
     this.ctx.drawImage(this.avatar.image, this.avatar.x, this.avatar.y, this.avatar.width, this.avatar.height);
   }
 
+  // generate classroom in random position
+
   _assignControls() {
     // Keyboard Controls:
     document.addEventListener('keydown', (event) => {
@@ -36,13 +38,26 @@ class Game{
     });
   }
 
+  /*_checkCollision() {
+    if ((this.avatar.x + (this.avatar.width/2))  === this.door.x) {
+
+    }
+  }*/
+
   _drawClock() {
     this.ctx.font = '30px Courier New';
     this.ctx.fillText(this.clock.time, this.clock.x, this.clock.y, this.clock.width, this.clock.height);
   }
 
+  // PUEDE QUE EL SET INTERVAL DEL STARTCOUNT SE TENGA Q DEFINIR DESDE AQUI
+
   _cleanCanvas() {
     this.ctx.clearRect(0, 0, 1000, 600);
+  }
+  checkMinutes(){
+    if (this.clock.minutes === 34){
+      this.clock.stopClock()
+    }
   }
 
   _update() {
@@ -50,12 +65,15 @@ class Game{
     this._drawDoor();
     this._drawAvatar();
     this._drawClock();
+    this.checkMinutes();
+    
     window.requestAnimationFrame(() => this._update());
   }
 
   start() {
     this._update();
     this._assignControls();
+    this.clock.createClock();
   }
 }
 
