@@ -32,6 +32,7 @@ class Game{
   }
 
   _drawClock() {
+    //INNERTEXT HTML
     this.ctx.font = '30px Courier New';
     this.ctx.fillText(this.clock.time, this.clock.x, this.clock.y, this.clock.width, this.clock.height);
   }

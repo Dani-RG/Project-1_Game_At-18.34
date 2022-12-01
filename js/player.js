@@ -5,6 +5,7 @@ class Player {
         this.y = y;
         this.width = width;
         this.height = height;
+        // currentInterval = 0;
     }
 
     /*
@@ -67,10 +68,11 @@ class Player {
       }
   }
 
-    _autoWalk() {
+    _autoWalk() { //CLEAR INTERVALS
       document.addEventListener('keydown', (event) => {
         switch (event.code) {
           case 'ArrowLeft':
+            //if (currentInterval != 0) { clearInterval(this.currentInterval) y this.currentInterval = setInverval} else this.currentInterval = setInterval blabla
             setInterval (()=>this.autoLeft(), 10);
             break;
           case 'ArrowRight':
