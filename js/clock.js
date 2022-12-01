@@ -5,11 +5,15 @@ class Clock {
         this.time = 'READY!';
         this.minutes = this._randomMinute(25, 30);
         this.intervalID = null;
-        //font size desde el html definiendo su div y cogiendolo con document.??
+        //font size desde el html definiendo su div y 
+        //cogiendolo con document.??
         //this.fontSize = 
         //this.width = width;
         //this.height = height;
     }
+
+    //GET THE STRING CLOCK FROM DE HTML AND THROW A 
+    //INNER.HTML WITH THE NEW CLOCK STRING
 
     _randomMinute(min, max) {
         min = Math.ceil(min);

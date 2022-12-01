@@ -4,5 +4,5 @@ avatar.src = '../img/avatar.png';
 
 // Door
 const door = new Image();
-door.src = '../img/door.png';
+door.src = '../img/glass door.png';
 

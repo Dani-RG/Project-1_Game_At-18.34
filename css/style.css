@@ -78,3 +78,8 @@ canvas {
 .shown {
   display: flex;
 }
+
+button {
+  width: 120PX;
+  height: 50px;
+}

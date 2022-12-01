@@ -2,7 +2,7 @@ class Game{
   constructor(context) {
     this.ctx = context;
     this.avatar = new Player (470, 500, 70, 70);
-    this.door = new Door (270, 0, 450, 350); //(450, 300, 50, 50)
+    this.door = new Door (220, 110, 60, 100); //(450, 300, 50, 50)
     this.clock = new Clock (100, 40);
   }
 
@@ -17,18 +17,16 @@ class Game{
   // generate classroom in random position
   //  ON THIRD WIN, ALERT "GET READY, IT'S LAB DAY!" AND EVERITHING TURNS UP SIDE DOWN, DOOR, AVATAR AND CONTROLS.
 
-  /*
   _checkCollision() {
-    if ((this.avatar.x + (this.avatar.width/2) === this.door.x) && 
-      (this.avatar.y + (this.avatar.height/2) === (this.door.y + this.door.height))) {
-        window.alert('Congrats!');
-    }
-  }
-*/
-
-  _checkCollision() {
-    if (this.avatar.x === this.door.x) /*&& 
-      (this.avatar.y + (this.avatar.height/2) === (this.door.y + this.door.height))*/ {
+    if (
+      (this.avatar.x >= this.door.x && this.avatar.x <= this.door.x + this.door.width ||
+      this.avatar.x + this.avatar.width >= this.door.x && this.avatar.x +this.avatar.width <= this.door.x + this.door.width
+      ) && 
+        (this.avatar.y >= this.door.y && this.avatar.y <= this.door.y + this.door.height ||
+        this.avatar.y + this.avatar.height >= this.door.y && this.avatar.y +this.avatar.height <= this.door.y + this.door.height
+        )
+        )
+      {
         window.alert('Congrats!');
     }
   }
@@ -38,28 +36,24 @@ class Game{
     this.ctx.fillText(this.clock.time, this.clock.x, this.clock.y, this.clock.width, this.clock.height);
   }
 
- // autowalk
-
   _cleanCanvas() {
     this.ctx.clearRect(0, 0, 1000, 600);
   }
 
-  _checkMinutes(){
-    if (this.clock.minutes === 34){
+  _checkTimeOver(){
+    if (this.clock.minutes === 36){
       this.clock._stopClock()
+      window.alert('Try Again!');
     }
   }
-
-  // IF AVATAR TOUCH DOOR, ALERT CONGRATS!
-  // IF MINUTES O CLOCK === 18:34, ALERT TRY AGAIN!
 
   _update() {
     this._cleanCanvas();
     this._drawDoor();
     this._drawAvatar();
     this._drawClock();
-    this._checkMinutes();
     this._checkCollision();
+    this._checkTimeOver();
     
     window.requestAnimationFrame(() => this._update());
   }
