@@ -22,7 +22,7 @@ class Game{
       newMate._assignImage();
       newMate._mateAppear();
       this.mates.push(newMate);
-    }, 1000)
+    }, 500)
   }
 
   _drawMates() {

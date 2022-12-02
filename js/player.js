@@ -44,40 +44,40 @@ class Player {
           case 'ArrowLeft':
             if (this.curInterval != 0) {
               clearInterval(this.curInterval)
-              this.curInterval = setInterval (()=>this.autoLeft(), 1)
+              this.curInterval = setInterval (()=>this.autoLeft(), 5)
             }
             else {
-              this.curInterval = setInterval (()=>this.autoLeft(), 1)
+              this.curInterval = setInterval (()=>this.autoLeft(), 5)
             }
           break;
 
           case 'ArrowRight':
               if (this.curInterval != 0) {
               clearInterval(this.curInterval)
-              this.curInterval = setInterval (()=>this.autoRight(), 1)
+              this.curInterval = setInterval (()=>this.autoRight(), 5)
             }
             else {
-              this.curInterval = setInterval (()=>this.autoRight(), 1)
+              this.curInterval = setInterval (()=>this.autoRight(), 5)
             }
             break;
 
           case 'ArrowUp':
             if (this.curInterval != 0) {
               clearInterval(this.curInterval)
-              this.curInterval = setInterval (()=>this.autoUp(), 1)
+              this.curInterval = setInterval (()=>this.autoUp(), 5)
             }
             else {
-              this.curInterval = setInterval (()=>this.autoUp(), 1)
+              this.curInterval = setInterval (()=>this.autoUp(), 5)
             }
             break;
 
           case 'ArrowDown':
             if (this.curInterval != 0) {
               clearInterval(this.curInterval)
-              this.curInterval = setInterval (()=>this.autoDown(), 1)
+              this.curInterval = setInterval (()=>this.autoDown(), 5)
             }
             else {
-              this.curInterval = setInterval (()=>this.autoDown(), 1)
+              this.curInterval = setInterval (()=>this.autoDown(), 5)
             }
             break;
 
