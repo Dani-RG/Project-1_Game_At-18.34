@@ -4,6 +4,8 @@ class Game{
     this.avatar = new Player (470, 500, 70, 70);
     this.door = new Door (220, 110, 60, 100); //(450, 300, 50, 50)
     this.clock = new Clock (100, 40);
+    this.mates = [];
+    this._generateInterval = null;
   }
 
   _drawDoor() {
@@ -12,6 +14,21 @@ class Game{
 
   _drawAvatar() {
     this.ctx.drawImage(this.avatar.image, this.avatar.x, this.avatar.y, this.avatar.width, this.avatar.height);
+  }
+
+  _generateMates() {
+    this.generateInterval = setInterval(() => {
+      const newMate = new Mate();
+      newMate._assignImage();
+      newMate._mateAppear();
+      this.mates.push(newMate);
+    }, 1000)
+  }
+
+  _drawMates() {
+    this.mates.forEach((elem) => {
+      this.ctx.drawImage(elem.image, elem.x, elem.y, elem.width, elem.height);
+    })
   }
 
   // generate classroom in random position
@@ -27,7 +44,7 @@ class Game{
         )
         )
       {
-        window.alert('Congrats!');
+        window.alert("That's it!");
     }
   }
 
@@ -44,7 +61,7 @@ class Game{
   _checkTimeOver(){
     if (this.clock.minutes === 36){
       this.clock._stopClock()
-      window.alert('Try Again!');
+      window.alert('Too Late!');
     }
   }
 
@@ -53,6 +70,7 @@ class Game{
     this._drawDoor();
     this._drawAvatar();
     this._drawClock();
+    this._drawMates();
     this._checkCollision();
     this._checkTimeOver();
     
@@ -63,6 +81,7 @@ class Game{
     this._update();
     this.clock._createClock();
     this.avatar._autoWalk();
+    this._generateMates();
   }
 }
 

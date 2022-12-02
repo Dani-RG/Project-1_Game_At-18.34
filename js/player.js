@@ -5,119 +5,87 @@ class Player {
         this.y = y;
         this.width = width;
         this.height = height;
-        // currentInterval = 0;
+        this.curInterval = null;
     }
-
-    /*
-    moveRight() {
-        this.x = this.x + 25;
-        if (this.x > 1000) {
-          this.x = 0 - this.width;
-        }
-      }
-    
-      moveLeft() {
-        this.x = this.x - 25;
-        if (this.x + this.width < 0) {
-          this.x = 1000;
-        }
-      }
-
-    
-    moveUp() {
-        this.y = this.y - 25;
-        if (this.y + this.height < 0) {
-            this.y = 600;
-        }
-    }
-
-    moveDown() {
-        this.y = this.y + 25;
-        if (this.y > 600) {
-            this.y = 0 - this.height;
-        }
-    }
-    */
 
     autoRight() {
-      this.x = this.x + 1; //25
+      this.x = this.x + 2;
       if (this.x > 1000) {
         this.x = 0 - this.width;
       }
     }
   
     autoLeft() {
-      this.x = this.x - 1; //25
+      this.x = this.x - 2;
       if (this.x + this.width < 0) {
         this.x = 1000;
       }
     }
 
-  
-  autoUp() {
-      this.y = this.y - 1; //25
+    autoUp() {
+      this.y = this.y - 2;
       if (this.y + this.height < 0) {
           this.y = 600;
       }
-  }
+    }
 
-  autoDown() {
-      this.y = this.y + 1; //25
+    autoDown() {
+      this.y = this.y + 2;
       if (this.y > 600) {
           this.y = 0 - this.height;
       }
-  }
+    }
 
-    _autoWalk() { //CLEAR INTERVALS
+      // AUMENTARLE SU VELOCIDAD POR RONDAS PUEDE SER UN IF CANVAS 1 {AUTOWALK NO1}, ELSE IF CANVAS 2 {AUTOWALK NO2}
+    _autoWalk() {
       document.addEventListener('keydown', (event) => {
         switch (event.code) {
+
           case 'ArrowLeft':
-            //if (currentInterval != 0) { clearInterval(this.currentInterval) y this.currentInterval = setInverval} else this.currentInterval = setInterval blabla
-            setInterval (()=>this.autoLeft(), 10);
-            break;
+            if (this.curInterval != 0) {
+              clearInterval(this.curInterval)
+              this.curInterval = setInterval (()=>this.autoLeft(), 1)
+            }
+            else {
+              this.curInterval = setInterval (()=>this.autoLeft(), 1)
+            }
+          break;
+
           case 'ArrowRight':
-            setInterval (()=>this.autoRight(), 10);
+              if (this.curInterval != 0) {
+              clearInterval(this.curInterval)
+              this.curInterval = setInterval (()=>this.autoRight(), 1)
+            }
+            else {
+              this.curInterval = setInterval (()=>this.autoRight(), 1)
+            }
             break;
+
           case 'ArrowUp':
-            setInterval (()=>this.autoUp(), 10);
+            if (this.curInterval != 0) {
+              clearInterval(this.curInterval)
+              this.curInterval = setInterval (()=>this.autoUp(), 1)
+            }
+            else {
+              this.curInterval = setInterval (()=>this.autoUp(), 1)
+            }
             break;
+
           case 'ArrowDown':
-            setInterval (()=>this.autoDown(), 10);
+            if (this.curInterval != 0) {
+              clearInterval(this.curInterval)
+              this.curInterval = setInterval (()=>this.autoDown(), 1)
+            }
+            else {
+              this.curInterval = setInterval (()=>this.autoDown(), 1)
+            }
             break;
+
           default:
             break;
         }
       })
-    }
-
-    /* CORRECT CODE OF ASSIGNING CONTROLS
-        _autoWalk() {
-      document.addEventListener('keydown', (event) => {
-        switch (event.code) {
-          case 'ArrowLeft':
-            this.autoLeft();
-            break;
-          case 'ArrowRight':
-            this.autoRight();
-            break;
-          case 'ArrowUp':
-            this.autoUp();
-            break;
-          case 'ArrowDown':
-            this.autoDown();
-            break;
-          default:
-            break;
-        }
-      })
-    }
-
-    THIS IS NOT NECESSARY:
-    _startAutoWalk() {
-      setInterval (()=>this._autoWalk(), 500);
-    }
-    */
-    
+    }  
 }
 
 
