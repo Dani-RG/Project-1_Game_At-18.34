@@ -6,6 +6,7 @@ class Game{
     this.clock = new Clock (100, 40);
     this.mates = [];
     this._generateInterval = null;
+    this.theClock = undefined;
   }
 
   _drawDoor() {
@@ -20,9 +21,10 @@ class Game{
     this.generateInterval = setInterval(() => {
       const newMate = new Mate();
       newMate._assignImage();
+      newMate._assignPosition(this.avatar.x, this.avatar.y)
       newMate._mateAppear();
       this.mates.push(newMate);
-    }, 500)
+    }, 2000)
   }
 
   _drawMates() {
@@ -40,7 +42,7 @@ class Game{
       this.avatar.x + this.avatar.width >= this.door.x && this.avatar.x +this.avatar.width <= this.door.x + this.door.width
       ) && 
         (this.avatar.y >= this.door.y && this.avatar.y <= this.door.y + this.door.height ||
-        this.avatar.y + this.avatar.height >= this.door.y && this.avatar.y +this.avatar.height <= this.door.y + this.door.height
+        this.avatar.y + this.avatar.height >= this.door.y && this.avatar.y + this.avatar.height <= this.door.y + this.door.height
         )
         )
       {
@@ -48,10 +50,27 @@ class Game{
     }
   }
 
+  _checkMeeting() {
+    this.mates.forEach((mate) => {
+      if (
+        (this.avatar.x >= mate.x && this.avatar.x <= mate.x + mate.width ||
+        this.avatar.x + this.avatar.width >= mate.x && this.avatar.x +this.avatar.width <= mate.x + mate.width
+        ) && 
+          (this.avatar.y >= mate.y && this.avatar.y <= mate.y + mate.height ||
+          this.avatar.y + this.avatar.height >= mate.y && this.avatar.y + this.avatar.height <= mate.y + mate.height
+          )
+      ) {
+        this.avatar._stopMovement();
+      }
+    })
+  }
+
   _drawClock() {
-    //INNERTEXT HTML
-    this.ctx.font = '30px Courier New';
-    this.ctx.fillText(this.clock.time, this.clock.x, this.clock.y, this.clock.width, this.clock.height);
+    //INNERTEXT HTML o TEXT CONTENT
+    this.theClock = document.getElementById('the-clock');
+    this.theClock.innerHTML = "prueba-reloj";
+    //this.ctx.font = '30px Courier New';
+    //this.ctx.fillText(this.clock.time, this.clock.x, this.clock.y, this.clock.width, this.clock.height);
   }
 
   _cleanCanvas() {
@@ -59,9 +78,13 @@ class Game{
   }
 
   _checkTimeOver(){
-    if (this.clock.minutes === 36){
+    if (this.clock.minutes === 35){
       this.clock._stopClock()
-      window.alert('Too Late!');
+      //window.alert('Too Late!');
+      const losePage = document.getElementById('lose-page');
+      losePage.style = 'display: flex';
+      const canvas = document.getElementById('canvas');
+      canvas.style = 'display: none';
     }
   }
 
@@ -73,6 +96,7 @@ class Game{
     this._drawMates();
     this._checkCollision();
     this._checkTimeOver();
+    this._checkMeeting();
     
     window.requestAnimationFrame(() => this._update());
   }

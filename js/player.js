@@ -6,6 +6,7 @@ class Player {
         this.width = width;
         this.height = height;
         this.curInterval = null;
+        //this.playerPosition = null;
     }
 
     autoRight() {
@@ -85,7 +86,13 @@ class Player {
             break;
         }
       })
-    }  
+    }
+    
+    _stopMovement() {
+      clearInterval(this.curInterval);
+    }
+
+    //playerPosition
 }
 
 
