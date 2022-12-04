@@ -6,37 +6,35 @@ window.onload = function () {
   const winPage = document.getElementById('win-page');
   const startButton = document.getElementById('start');
   const clockText = document.getElementById('textClock');
-  const tryAgainButton = document.getElementById('try-again');
   const newRoundButton = document.getElementById('new-round');
+  const tryAgainButton = document.getElementById('try-again');
 
-  
-    startButton.onclick = function Play () {
-    welcomePage.style = "display: none";
+  function play() {
+    welcomePage.style = 'display: none';
+    winPage.style = 'display: none';
+    losePage.style = 'display: none';
     canvas.classList.remove('hidden');
     clockText.classList.remove('hidden');
+    //winPage.classList.add('hidden'); DOES NOT WORK
+    //losePage.classList.add('hidden'); DOES NOT WORK
     const game = new Game(ctx);
     game.start();
-  }
-  
-/*
-  function play() { //add event listener??
-    welcomePage.style = "display: none";
-    losePage.style = "display: none";
-    winPage.style = "display: none";
-    canvas.classList.remove('hidden');
-    clockText.classList.remove('hidden');
-    const game = new Game(ctx);
-    game.start();
+    console.log('clicked!');
   }
 
-  //startButton.onclick = play();
+  startButton.onclick = function () {
+    play();
+  }
 
-  tryAgainButton.onclick = play();
+  newRoundButton.onclick = function () {
+    play();
+  }
 
-  //newRoundButton.onclick = play();
-*/
+  tryAgainButton.onclick = function () {
+    play();
+  }
+
 }
-
 
 // DAR DISEÑO ESTÉTICO EL RELOJ
 // CONVIENE CARGAR GIF COMO PLAYER? MEJOR NO, ARRAY DE 4 IMAGENES

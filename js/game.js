@@ -9,7 +9,7 @@ class Game{
     this.textClock = undefined;
     this.canvas = document.getElementById('canvas');
     this.losePage = document.getElementById('lose-page');
-   this.winPage = document.getElementById('win-page');
+    this.winPage = document.getElementById('win-page');
   }
 
   _drawDoor() {
@@ -79,9 +79,10 @@ class Game{
         )
         )
       {
-        this.clock._stopClock();
         this.winPage.style = 'display: flex';
         this.canvas.style = 'display: none';
+        this.clock._stopClock();
+        this.textClock.classList.add('hidden');
         //this.losePage.classList.add('hidden'); DOES NOT WORK
     }
   }
