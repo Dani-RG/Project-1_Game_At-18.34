@@ -60,6 +60,25 @@ p {
   display: none;
 }
 
+#win-page {
+  height: 600px;
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  border: 1px solid black;
+  margin-top: 30px;
+  /* CONSIDER PUT DEGRADETED COLOURS OR CHANGING COLOR */
+  background-color: #05F2DB;
+}
+
+#win-page {
+  display: none;
+}
+
 canvas {
   border: 1px solid black;
   display: block;

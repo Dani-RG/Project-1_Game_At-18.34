@@ -6,7 +6,10 @@ class Game{
     this.clock = new Clock (100, 40);
     this.mates = [];
     this._generateInterval = null;
-    this.theClock = undefined;
+    this.textClock = undefined;
+    this.canvas = document.getElementById('canvas');
+    this.losePage = document.getElementById('lose-page');
+   this.winPage = document.getElementById('win-page');
   }
 
   _drawDoor() {
@@ -36,20 +39,6 @@ class Game{
   // generate classroom in random position
   //  ON THIRD WIN, ALERT "GET READY, IT'S LAB DAY!" AND EVERITHING TURNS UP SIDE DOWN, DOOR, AVATAR AND CONTROLS.
 
-  _checkCollision() {
-    if (
-      (this.avatar.x >= this.door.x && this.avatar.x <= this.door.x + this.door.width ||
-      this.avatar.x + this.avatar.width >= this.door.x && this.avatar.x +this.avatar.width <= this.door.x + this.door.width
-      ) && 
-        (this.avatar.y >= this.door.y && this.avatar.y <= this.door.y + this.door.height ||
-        this.avatar.y + this.avatar.height >= this.door.y && this.avatar.y + this.avatar.height <= this.door.y + this.door.height
-        )
-        )
-      {
-        window.alert("That's it!");
-    }
-  }
-
   _checkMeeting() {
     this.mates.forEach((mate) => {
       if (
@@ -67,8 +56,8 @@ class Game{
 
   _drawClock() {
     //INNERTEXT HTML o TEXT CONTENT
-    this.theClock = document.getElementById('the-clock');
-    this.theClock.innerHTML = "prueba-reloj";
+    this.textClock = document.getElementById('textClock');
+    this.textClock.innerHTML = this.clock.time;
     //this.ctx.font = '30px Courier New';
     //this.ctx.fillText(this.clock.time, this.clock.x, this.clock.y, this.clock.width, this.clock.height);
   }
@@ -77,14 +66,32 @@ class Game{
     this.ctx.clearRect(0, 0, 1000, 600);
   }
 
+  _checkCollision() {
+    if (
+      (
+        this.clock.minutes === 35
+      ) &&
+      (this.avatar.x >= this.door.x && this.avatar.x <= this.door.x + this.door.width ||
+      this.avatar.x + this.avatar.width >= this.door.x && this.avatar.x +this.avatar.width <= this.door.x + this.door.width
+      ) && 
+        (this.avatar.y >= this.door.y && this.avatar.y <= this.door.y + this.door.height ||
+        this.avatar.y + this.avatar.height >= this.door.y && this.avatar.y + this.avatar.height <= this.door.y + this.door.height
+        )
+        )
+      {
+        this.clock._stopClock();
+        this.winPage.style = 'display: flex';
+        this.canvas.style = 'display: none';
+        //this.losePage.classList.add('hidden'); DOES NOT WORK
+    }
+  }
+
   _checkTimeOver(){
-    if (this.clock.minutes === 35){
+    if (this.clock.minutes === 36){
       this.clock._stopClock()
-      //window.alert('Too Late!');
-      const losePage = document.getElementById('lose-page');
-      losePage.style = 'display: flex';
-      const canvas = document.getElementById('canvas');
-      canvas.style = 'display: none';
+      this.losePage.style = 'display: flex';
+      this.canvas.style = 'display: none';
+      this.textClock.classList.add('hidden');
     }
   }
 
