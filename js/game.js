@@ -6,10 +6,12 @@ class Game{
     this.clock = new Clock (100, 40);
     this.mates = [];
     this._generateInterval = null;
-    this.textClock = undefined;
+    this.textClock = document.getElementById('text-clock');
     this.canvas = document.getElementById('canvas');
     this.losePage = document.getElementById('lose-page');
     this.winPage = document.getElementById('win-page');
+    this.scoreText = document.getElementById('score-text');
+    this.score = 0;
   }
 
   _drawDoor() {
@@ -55,15 +57,18 @@ class Game{
   }
 
   _drawClock() {
-    this.textClock = document.getElementById('textClock');
     this.textClock.innerHTML = this.clock.time;
+  }
+
+  _drawScore() {
+    this.scoreText.innerHTML = `Rounds = ${this.score}`;
   }
 
   _cleanCanvas() {
     this.ctx.clearRect(0, 0, 1000, 600);
   }
 
-  _checkCollision() {
+  _checkArrival() {
     if (
       (
         this.clock.minutes === 35
@@ -80,6 +85,10 @@ class Game{
         this.canvas.style = 'display: none';
         this.clock._stopClock();
         this.textClock.classList.add('hidden');
+        this.score ++;
+        this.avatar._hide();
+        console.log(this.score);
+        // RESET CANVAS
     }
   }
 
@@ -89,6 +98,7 @@ class Game{
       this.losePage.style = 'display: flex';
       this.canvas.style = 'display: none';
       this.textClock.classList.add('hidden');
+      // RESET CANVAS
     }
   }
 
@@ -98,7 +108,8 @@ class Game{
     this._drawAvatar();
     this._drawClock();
     this._drawMates();
-    this._checkCollision();
+    this._drawScore();
+    this._checkArrival();
     this._checkTimeOver();
     this._checkMeeting();
     

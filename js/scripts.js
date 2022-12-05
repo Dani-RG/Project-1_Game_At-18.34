@@ -5,9 +5,10 @@ window.onload = function () {
   const losePage = document.getElementById('lose-page');
   const winPage = document.getElementById('win-page');
   const startButton = document.getElementById('start');
-  const clockText = document.getElementById('textClock');
+  const clockText = document.getElementById('text-clock');
   const newRoundButton = document.getElementById('new-round');
   const tryAgainButton = document.getElementById('try-again');
+  const scoreText = document.getElementById('score-text');
 
   function play() {
     welcomePage.style = 'display: none';
@@ -15,6 +16,7 @@ window.onload = function () {
     losePage.style = 'display: none';
     canvas.classList.remove('hidden');
     clockText.classList.remove('hidden');
+    scoreText.classList.remove('hidden');
     //winPage.classList.add('hidden'); DOES NOT WORK
     //losePage.classList.add('hidden'); DOES NOT WORK
     const game = new Game(ctx);

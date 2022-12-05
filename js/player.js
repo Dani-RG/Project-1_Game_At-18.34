@@ -92,6 +92,13 @@ class Player {
       clearInterval(this.curInterval);
     }
 
+    _hide() {
+      this.x = -70;
+      this.y = -70;
+      this.width = 0;
+      this.height = 0;
+    }
+
     //playerPosition
 }
 
