@@ -1,7 +1,5 @@
 class Mate {
     constructor() {
-        //this.x = Math.floor(Math.random() * 1000);
-        //this.y = Math.floor(Math.random() * 600);
         this.x = null;
         this.y = null;
         this.width = 50;
@@ -47,7 +45,7 @@ class Mate {
                 this.x = this.x + 1;
             }
 
-        }, 50)
+        }, 20)
     }
 }
 

@@ -27,7 +27,7 @@ class Game{
       newMate._assignPosition(this.avatar.x, this.avatar.y)
       newMate._mateAppear();
       this.mates.push(newMate);
-    }, 2000)
+    }, 500)
   }
 
   _drawMates() {
@@ -36,7 +36,7 @@ class Game{
     })
   }
 
-  // generate classroom in random position
+  // GENERATE CLASSROOM IN RANDOM POSITION
   //  ON THIRD WIN, ALERT "GET READY, IT'S LAB DAY!" AND EVERITHING TURNS UP SIDE DOWN, DOOR, AVATAR AND CONTROLS.
 
   _checkMeeting() {
@@ -55,11 +55,8 @@ class Game{
   }
 
   _drawClock() {
-    //INNERTEXT HTML o TEXT CONTENT
     this.textClock = document.getElementById('textClock');
     this.textClock.innerHTML = this.clock.time;
-    //this.ctx.font = '30px Courier New';
-    //this.ctx.fillText(this.clock.time, this.clock.x, this.clock.y, this.clock.width, this.clock.height);
   }
 
   _cleanCanvas() {
@@ -83,7 +80,6 @@ class Game{
         this.canvas.style = 'display: none';
         this.clock._stopClock();
         this.textClock.classList.add('hidden');
-        //this.losePage.classList.add('hidden'); DOES NOT WORK
     }
   }
 
