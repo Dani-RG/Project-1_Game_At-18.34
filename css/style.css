@@ -4,6 +4,10 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
+body {
+  background-color: rgb(25, 33, 41);
+}
+
 h1 {
   color: white;
   background-color: rgb(25, 33, 41);

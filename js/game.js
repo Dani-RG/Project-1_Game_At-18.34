@@ -19,7 +19,10 @@ class Game{
     this.secondLosePage = document.getElementById('second-lose-page');
     this.scoreText = document.getElementById('score-text');
     this.score = 0;
+    //this.newRoundButton = document.getElementById('new-round');
   }
+
+  //function set values by default
 
   _drawDoor() {
     this.ctx.drawImage(this.door.image, this.door.x, this.door.y, this.door.width, this.door.height);
@@ -36,6 +39,14 @@ class Game{
     else {this.frameX = 0}
     console.log(this.frameX);
   }
+
+  /* AJUSTE DE MARINA PARA QUE NO SUCEDA TAN RAPIDO LA ITERACION:
+  _spriteIterater() { setInterval(() => {
+    if (this.frameX < 4) {this.frameX ++}
+    else {this.frameX = 0}
+    console.log(this.frameX);
+    }, 500)
+  }*/
 
   /* THIS CODE ITERATES WELL BUT IMAGE DOES NOT CHANGE
   _spriteIterater() {
@@ -96,18 +107,17 @@ class Game{
       (this.avatar.x >= this.door.x && this.avatar.x <= this.door.x + this.door.width ||
       this.avatar.x + this.avatar.width >= this.door.x && this.avatar.x +this.avatar.width <= this.door.x + this.door.width
       ) && 
-        (this.avatar.y >= this.door.y && this.avatar.y <= this.door.y + this.door.height ||
-        this.avatar.y + this.avatar.height >= this.door.y && this.avatar.y + this.avatar.height <= this.door.y + this.door.height
-        )
-        )
+      (this.avatar.y >= this.door.y && this.avatar.y <= this.door.y + this.door.height ||
+      this.avatar.y + this.avatar.height >= this.door.y && this.avatar.y + this.avatar.height <= this.door.y + this.door.height
+      )
+      )
       {
         this.winPage.style = 'display: flex';
         this.canvas.style = 'display: none';
         this.clock._stopClock();
         this.textClock.classList.add('hidden');
-        this.score ++;
+        //this.score ++;
         this.avatar._hide();
-        // RESET CANVAS
     }
     else if (
       (this.clock.minutes < 34) &&
@@ -117,12 +127,12 @@ class Game{
       (this.avatar.y >= this.door.y && this.avatar.y <= this.door.y + this.door.height ||
       this.avatar.y + this.avatar.height >= this.door.y && this.avatar.y + this.avatar.height <= this.door.y + this.door.height
       )
-    )
-    {
-      this.clock._stopClock()
-      this.secondLosePage.style = 'display: flex';
-      this.canvas.style = 'display: none';
-      this.textClock.classList.add('hidden');
+      )
+      {
+        this.clock._stopClock()
+        this.secondLosePage.style = 'display: flex';
+        this.canvas.style = 'display: none';
+        this.textClock.classList.add('hidden');
     }
   }
 
@@ -132,6 +142,7 @@ class Game{
       this.losePage.style = 'display: flex';
       this.canvas.style = 'display: none';
       this.textClock.classList.add('hidden');
+      //set values by default
       // RESET CANVAS
     }
   }
@@ -146,7 +157,7 @@ class Game{
     this._drawAvatar();
     this._drawClock();
     this._drawMates();
-    this._drawScore();
+    //this._drawScore();
     this._checkArrival();
     this._checkTimeOver();
     this._checkMeeting();
@@ -161,5 +172,6 @@ class Game{
     this.avatar._autoWalk();
     this._generateMates();
   }
+
 }
 
