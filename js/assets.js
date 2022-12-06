@@ -1,6 +1,6 @@
 //Avatar
 const avatar = new Image();
-avatar.src = '../img/avatar.png';
+avatar.src = '../img/Alex Noah 4 ways c.u 25x20.png';
 
 // Door
 const door = new Image();

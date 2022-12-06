@@ -32,7 +32,7 @@ class Mate {
             }
 
             if (this.image === matesImages[2]) {
-                this.y = this.y + 1;
+                this.y = this.y - 1;
             }
 
             if (this.image === matesImages[3]) {
@@ -41,8 +41,8 @@ class Mate {
             }
 
             if (this.image === matesImages[4]) {
-                this.y = this.y + 1;
-                this.x = this.x + 1;
+                this.y = this.y - 1;
+                this.x = this.x - 1;
             }
 
         }, 20)

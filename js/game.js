@@ -1,7 +1,12 @@
+//let frameX = 0; //0-4max
+//let frameY = 0; //0-3max
+
 class Game{
   constructor(context) {
     this.ctx = context;
-    this.avatar = new Player (470, 500, 70, 70);
+    this.frameX = 0; //0-4max
+    this.frameY = 0; //0-3max
+    this.avatar = new Player (this.frameX * spriteWidth, this.frameY * spriteHeight, spriteWidth, spriteHeight, 900, 500, spriteWidth, spriteHeight); // rightX downY corner = 900, 500
     this.door = new Door (220, 110, 60, 100); //(450, 300, 50, 50)
     this.clock = new Clock (100, 40);
     this.mates = [];
@@ -14,22 +19,38 @@ class Game{
     this.score = 0;
   }
 
-  _drawDoor() {
+  /*_drawDoor() {
     this.ctx.drawImage(this.door.image, this.door.x, this.door.y, this.door.width, this.door.height);
+  }*/
+  
+  _drawAvatar() {
+    //this.ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh); s=source // d=destination
+    this.ctx.drawImage(this.avatar.image, this.avatar.s_x, this.avatar.s_y, this.avatar.s_width, this.avatar.s_height, this.avatar.d_x, this.avatar.d_y, this.avatar.d_width, this.avatar.d_height);
   }
 
-  _drawAvatar() {
-    this.ctx.drawImage(this.avatar.image, this.avatar.x, this.avatar.y, this.avatar.width, this.avatar.height);
+  _spriteIterater() {
+    if (this.frameX < 4) {this.frameX ++}
+    else {this.frameX = 0}
+    console.log(this.frameX);
   }
+
+  /* THIS CODE ITERATES WELL BUT IMAGE DOES NOT CHANGE
+  _spriteIterater() {
+    if (this.frameX < 5) {this.frameX ++}
+    else {this.frameX = 0}
+    console.log(this.frameX);
+  }
+  */
 
   _generateMates() {
     this.generateInterval = setInterval(() => {
       const newMate = new Mate();
       newMate._assignImage();
-      newMate._assignPosition(this.avatar.x, this.avatar.y)
+      //newMate._assignPosition(this.avatar.x, this.avatar.y)
+      newMate._assignPosition(1000, 600);
       newMate._mateAppear();
       this.mates.push(newMate);
-    }, 500)
+    }, 1000)
   }
 
   _drawMates() {
@@ -41,6 +62,7 @@ class Game{
   // GENERATE CLASSROOM IN RANDOM POSITION
   //  ON THIRD WIN, ALERT "GET READY, IT'S LAB DAY!" AND EVERITHING TURNS UP SIDE DOWN, DOOR, AVATAR AND CONTROLS.
 
+  /*
   _checkMeeting() {
     this.mates.forEach((mate) => {
       if (
@@ -55,17 +77,13 @@ class Game{
       }
     })
   }
-
+*/
   _drawClock() {
     this.textClock.innerHTML = this.clock.time;
   }
 
   _drawScore() {
     this.scoreText.innerHTML = `Rounds = ${this.score}`;
-  }
-
-  _cleanCanvas() {
-    this.ctx.clearRect(0, 0, 1000, 600);
   }
 
   _checkArrival() {
@@ -87,7 +105,6 @@ class Game{
         this.textClock.classList.add('hidden');
         this.score ++;
         this.avatar._hide();
-        console.log(this.score);
         // RESET CANVAS
     }
   }
@@ -102,16 +119,24 @@ class Game{
     }
   }
 
+  _cleanCanvas() {
+    this.ctx.clearRect(0, 0, 1000, 600);
+  }
+
   _update() {
     this._cleanCanvas();
-    this._drawDoor();
+    //this._drawDoor();
     this._drawAvatar();
     this._drawClock();
     this._drawMates();
     this._drawScore();
-    this._checkArrival();
-    this._checkTimeOver();
-    this._checkMeeting();
+    //this._checkArrival();
+    //this._checkTimeOver();
+    //this._checkMeeting();
+
+    //spriteIter(); //////////////////////////////
+    //this._spriteIterater();
+    this._spriteIterater();
     
     window.requestAnimationFrame(() => this._update());
   }
@@ -119,7 +144,7 @@ class Game{
   start() {
     this._update();
     this.clock._createClock();
-    this.avatar._autoWalk();
+    //this.avatar._autoWalk();
     this._generateMates();
   }
 }
