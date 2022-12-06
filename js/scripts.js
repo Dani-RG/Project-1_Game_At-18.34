@@ -2,8 +2,9 @@ window.onload = function () {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
   const welcomePage = document.getElementById('welcome-page');
-  const losePage = document.getElementById('lose-page');
   const winPage = document.getElementById('win-page');
+  const losePage = document.getElementById('lose-page');
+  const secondLosePage = document.getElementById('second-lose-page');
   const startButton = document.getElementById('start');
   const clockText = document.getElementById('text-clock');
   const newRoundButton = document.getElementById('new-round');
@@ -14,6 +15,7 @@ window.onload = function () {
     welcomePage.style = 'display: none';
     winPage.style = 'display: none';
     losePage.style = 'display: none';
+    secondLosePage.style = 'display: none';
     canvas.classList.remove('hidden');
     clockText.classList.remove('hidden');
     scoreText.classList.remove('hidden');

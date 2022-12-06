@@ -39,25 +39,7 @@ p {
   margin: 0 auto;
   border: 1px solid black;
   margin-top: 30px;
-  background-color: rgb(67, 163, 230);
-}
-
-#lose-page {
-  height: 600px;
-  width: 1000px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  margin: 0 auto;
-  border: 1px solid black;
-  margin-top: 30px;
-  background-color: rgb(230, 164, 67);
-}
-
-#lose-page {
-  display: none;
+  background-color: #32C3FF;
 }
 
 #win-page {
@@ -76,6 +58,42 @@ p {
 }
 
 #win-page {
+  display: none;
+}
+
+#lose-page {
+  height: 600px;
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  border: 1px solid black;
+  margin-top: 30px;
+  background-color: #F29D1D;
+}
+
+#lose-page {
+  display: none;
+}
+
+#second-lose-page {
+  height: 600px;
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  border: 1px solid black;
+  margin-top: 30px;
+  background-color: #EFF211;
+}
+
+#second-lose-page {
   display: none;
 }
 

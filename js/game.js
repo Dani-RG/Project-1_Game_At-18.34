@@ -6,26 +6,29 @@ class Game{
     this.ctx = context;
     this.frameX = 0; //0-4max
     this.frameY = 0; //0-3max
-    this.avatar = new Player (this.frameX * spriteWidth, this.frameY * spriteHeight, spriteWidth, spriteHeight, 900, 500, spriteWidth, spriteHeight); // rightX downY corner = 900, 500
+    this.avatar = new Player (800, 500, spriteWidth, spriteHeight);
+    //this.avatar = new Player (this.frameX * spriteWidth, this.frameY * spriteHeight, spriteWidth, spriteHeight, 900, 500, spriteWidth, spriteHeight); // rightX downY corner = 900, 500
     this.door = new Door (220, 110, 60, 100); //(450, 300, 50, 50)
     this.clock = new Clock (100, 40);
     this.mates = [];
     this._generateInterval = null;
     this.textClock = document.getElementById('text-clock');
     this.canvas = document.getElementById('canvas');
-    this.losePage = document.getElementById('lose-page');
     this.winPage = document.getElementById('win-page');
+    this.losePage = document.getElementById('lose-page');
+    this.secondLosePage = document.getElementById('second-lose-page');
     this.scoreText = document.getElementById('score-text');
     this.score = 0;
   }
 
-  /*_drawDoor() {
+  _drawDoor() {
     this.ctx.drawImage(this.door.image, this.door.x, this.door.y, this.door.width, this.door.height);
-  }*/
+  }
   
-  _drawAvatar() {
+  _drawAvatar() { // CONSIDERAR PASARLE LOS DATOS DE FRAMEX Y FRAMEY AQUI
     //this.ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh); s=source // d=destination
-    this.ctx.drawImage(this.avatar.image, this.avatar.s_x, this.avatar.s_y, this.avatar.s_width, this.avatar.s_height, this.avatar.d_x, this.avatar.d_y, this.avatar.d_width, this.avatar.d_height);
+    this.ctx.drawImage(this.avatar.image, this.avatar.x, this.avatar.y, this.avatar.width, this.avatar.height);
+    //this.ctx.drawImage(this.avatar.image, this.avatar.s_x, this.avatar.s_y, this.avatar.s_width, this.avatar.s_height, this.avatar.d_x, this.avatar.d_y, this.avatar.d_width, this.avatar.d_height);
   }
 
   _spriteIterater() {
@@ -36,7 +39,7 @@ class Game{
 
   /* THIS CODE ITERATES WELL BUT IMAGE DOES NOT CHANGE
   _spriteIterater() {
-    if (this.frameX < 5) {this.frameX ++}
+    if (this.frameX < 4) {this.frameX ++}
     else {this.frameX = 0}
     console.log(this.frameX);
   }
@@ -50,7 +53,7 @@ class Game{
       newMate._assignPosition(1000, 600);
       newMate._mateAppear();
       this.mates.push(newMate);
-    }, 1000)
+    }, 700)
   }
 
   _drawMates() {
@@ -62,7 +65,6 @@ class Game{
   // GENERATE CLASSROOM IN RANDOM POSITION
   //  ON THIRD WIN, ALERT "GET READY, IT'S LAB DAY!" AND EVERITHING TURNS UP SIDE DOWN, DOOR, AVATAR AND CONTROLS.
 
-  /*
   _checkMeeting() {
     this.mates.forEach((mate) => {
       if (
@@ -77,7 +79,7 @@ class Game{
       }
     })
   }
-*/
+
   _drawClock() {
     this.textClock.innerHTML = this.clock.time;
   }
@@ -107,6 +109,21 @@ class Game{
         this.avatar._hide();
         // RESET CANVAS
     }
+    else if (
+      (this.clock.minutes < 34) &&
+      (this.avatar.x >= this.door.x && this.avatar.x <= this.door.x + this.door.width ||
+      this.avatar.x + this.avatar.width >= this.door.x && this.avatar.x +this.avatar.width <= this.door.x + this.door.width
+      ) && 
+      (this.avatar.y >= this.door.y && this.avatar.y <= this.door.y + this.door.height ||
+      this.avatar.y + this.avatar.height >= this.door.y && this.avatar.y + this.avatar.height <= this.door.y + this.door.height
+      )
+    )
+    {
+      this.clock._stopClock()
+      this.secondLosePage.style = 'display: flex';
+      this.canvas.style = 'display: none';
+      this.textClock.classList.add('hidden');
+    }
   }
 
   _checkTimeOver(){
@@ -125,18 +142,15 @@ class Game{
 
   _update() {
     this._cleanCanvas();
-    //this._drawDoor();
+    this._drawDoor();
     this._drawAvatar();
     this._drawClock();
     this._drawMates();
     this._drawScore();
-    //this._checkArrival();
-    //this._checkTimeOver();
-    //this._checkMeeting();
-
-    //spriteIter(); //////////////////////////////
+    this._checkArrival();
+    this._checkTimeOver();
+    this._checkMeeting();
     //this._spriteIterater();
-    this._spriteIterater();
     
     window.requestAnimationFrame(() => this._update());
   }
@@ -144,7 +158,7 @@ class Game{
   start() {
     this._update();
     this.clock._createClock();
-    //this.avatar._autoWalk();
+    this.avatar._autoWalk();
     this._generateMates();
   }
 }

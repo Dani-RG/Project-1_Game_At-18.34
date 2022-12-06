@@ -1,9 +1,6 @@
-const spriteWidth = 55.8; //one sprite, not the sprite sheet
+/*const spriteWidth = 55.8; //one sprite, not the sprite sheet
 const spriteHeight = 72.75; //one sprite, not the sprite sheet
 // noha 4 ways = 279 x 291 // one noha = 55.8 x 72.75
-
-//let frameX = 0; //0-4max
-//let frameY = 0; //0-3max
 
 class Player {
   constructor(s_x, s_y, s_width, s_height, d_x, d_y, d_width, d_height) {
@@ -23,20 +20,41 @@ class Player {
     //this.frameY = 0; //0-3max
   }
 
-  /*_spriteIterater() {
-    if (this.frameX < 4) {this.frameX ++}
-    else {this.frameX = 0}
-    console.log(this.frameX);
-  }*/
+  //_spriteIterater() {
+  //  if (this.frameX < 4) {this.frameX ++}
+  //  else {this.frameX = 0}
+  //  console.log(this.frameX);
+  //}
 
-}
+}*/
 
-/*if (frameX < 4) {frameX ++}
-else {frameX = 0}
-console.log(frameX);*/
+//////////////////////////////////////////////////////////////////////////////////
 
+//let frameX = 0; //0-4max
+//let frameY = 0; //0-3max
 
-  /*
+/*spriteIterater() {
+  if (this.frameX < 4) {this.frameX ++}
+  else {this.frameX = 0}
+  console.log(this.frameX);*/
+
+//////////////////////////////////////////////////////////////////////////////////
+
+// THIS CODE WORKS. IT MOVES THE AVATAR AUTOMATICALLY AND CHANGES ITS DIRECTIONS:
+
+const spriteWidth = 55.8; //one sprite, not the sprite sheet
+const spriteHeight = 72.75; //one sprite, not the sprite sheet
+
+class Player {
+  constructor(x, y, width, height) {
+      this.image = avatar;
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
+      this.curInterval = null;
+  }
+
   autoRight() {
     this.x = this.x + 1;
     if (this.x > 1000) {
@@ -72,6 +90,7 @@ console.log(frameX);*/
       switch (event.code) {
 
         case 'ArrowLeft':
+
           if (this.curInterval != 0) {
             clearInterval(this.curInterval)
             this.curInterval = setInterval (()=>this.autoLeft(), 2)
@@ -128,12 +147,9 @@ console.log(frameX);*/
     this.height = 0;
   }
 }
-*/
 
-//////////////////////////////////////////////////////////////////////////////////
-
-/* THIS CODE WORKS. IT MOVES THE AVATAR AUTOMATICALLY AND CHANGES ITS DIRECTIONS
-class Player {
+// ORIGINAL CODE. IT WORKS MOVING THE AVATAR AUTOMATICALLY AND CHANGING ITS DIRECTIONS
+/*class Player {
   constructor(x, y, width, height) {
       this.image = avatar;
       this.x = x;

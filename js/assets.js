@@ -19,7 +19,4 @@ mate3.src = '../img/mate3.png';
 const mate4 = new Image();
 mate4.src = '../img/mate4.png';
 
-const mate5 = new Image();
-mate5.src = '../img/mate5.png';
-
-const matesImages = [mate1, mate2, mate3, mate4, mate5];
+const matesImages = [mate1, mate2, mate3, mate4];
