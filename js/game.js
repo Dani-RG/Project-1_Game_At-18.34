@@ -4,12 +4,10 @@
 class Game{
   constructor(context) {
     this.ctx = context;
-    this.frameX = 0; //0-4max
-    this.frameY = 0; //0-3max
-    this.avatar = new Player (800, 500, spriteWidth, spriteHeight);
-    //this.avatar = new Player (this.frameX * spriteWidth, this.frameY * spriteHeight, spriteWidth, spriteHeight, 900, 500, spriteWidth, spriteHeight); // rightX downY corner = 900, 500
-    this.door = new Door (220, 110, 60, 100); //(450, 300, 50, 50)
-    this.clock = new Clock (100, 40);
+    //this.avatar = new Player (800, 500, spriteWidth, spriteHeight);
+    this.avatar = new Player(); // rightX downY corner = 900, 500
+    this.door = new Door(220, 110, 60, 100); //(450, 300, 50, 50)
+    this.clock = new Clock(100, 40);
     this.mates = [];
     this._generateInterval = null;
     this.textClock = document.getElementById('text-clock');
@@ -17,9 +15,12 @@ class Game{
     this.winPage = document.getElementById('win-page');
     this.losePage = document.getElementById('lose-page');
     this.secondLosePage = document.getElementById('second-lose-page');
-    this.scoreText = document.getElementById('score-text');
-    this.score = 0;
-    //this.newRoundButton = document.getElementById('new-round');
+    //this.scoreText = document.getElementById('score-text');
+    //this.score = 0;
+    this.frameX = 0; //0-4max
+    this.frameY = 1; //0-3max
+    this.gameFrame = 0;
+    this.staggerFrames = 7;
   }
 
   //function set values by default
@@ -28,33 +29,39 @@ class Game{
     this.ctx.drawImage(this.door.image, this.door.x, this.door.y, this.door.width, this.door.height);
   }
   
-  _drawAvatar() { // CONSIDERAR PASARLE LOS DATOS DE FRAMEX Y FRAMEY AQUI
+  _drawAvatar() {
     //this.ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh); s=source // d=destination
-    this.ctx.drawImage(this.avatar.image, this.avatar.x, this.avatar.y, this.avatar.width, this.avatar.height);
-    //this.ctx.drawImage(this.avatar.image, this.avatar.s_x, this.avatar.s_y, this.avatar.s_width, this.avatar.s_height, this.avatar.d_x, this.avatar.d_y, this.avatar.d_width, this.avatar.d_height);
+    //////this.ctx.drawImage(this.avatar.image, this.avatar.x, this.avatar.y, this.avatar.width, this.avatar.height);
+    ////this.ctx.drawImage(this.avatar.image, this.avatar.s_x, this.avatar.s_y, this.avatar.s_width, this.avatar.s_height, this.avatar.d_x, this.avatar.d_y, this.avatar.d_width, this.avatar.d_height);
+    //this.ctx.drawImage(this.avatar.image, this.frameX * spriteWidth, this.frameY * spriteHeight, spriteWidth, spriteHeight, 900, 500, spriteWidth, spriteHeight);
+    this.ctx.drawImage(this.avatar.image, this.frameX, this.frameY * spriteHeight, spriteWidth, spriteHeight, 900, 500, spriteWidth, spriteHeight);
   }
 
-  _spriteIterater() {
-    if (this.frameX < 4) {this.frameX ++}
-    else {this.frameX = 0}
-    console.log(this.frameX);
+  _assignControls() {
+    // Keyboard Controls:
+    document.addEventListener('keydown', (event) => {
+      switch (event.code) {
+        case 'ArrowLeft':
+          this.frameY = 1;
+          this.avatar.moveLeft();
+          break;
+        case 'ArrowRight':
+          this.frameY = 3;
+          this.avatar.moveRight();
+          break;
+        case 'ArrowUp':
+          this.frameY = 0;
+          this.avatar.moveUp();
+          break;
+        case 'ArrowDown':
+          this.frameY = 2;
+          this.avatar.moveDown();
+          break;
+        default:
+          break;
+      }
+    });
   }
-
-  /* AJUSTE DE MARINA PARA QUE NO SUCEDA TAN RAPIDO LA ITERACION:
-  _spriteIterater() { setInterval(() => {
-    if (this.frameX < 4) {this.frameX ++}
-    else {this.frameX = 0}
-    console.log(this.frameX);
-    }, 500)
-  }*/
-
-  /* THIS CODE ITERATES WELL BUT IMAGE DOES NOT CHANGE
-  _spriteIterater() {
-    if (this.frameX < 4) {this.frameX ++}
-    else {this.frameX = 0}
-    console.log(this.frameX);
-  }
-  */
 
   _generateMates() {
     this.generateInterval = setInterval(() => {
@@ -95,9 +102,9 @@ class Game{
     this.textClock.innerHTML = this.clock.time;
   }
 
-  _drawScore() {
+  /*_drawScore() {
     this.scoreText.innerHTML = `Rounds = ${this.score}`;
-  }
+  }*/
 
   _checkArrival() {
     if (
@@ -158,19 +165,23 @@ class Game{
     this._drawClock();
     this._drawMates();
     //this._drawScore();
-    this._checkArrival();
-    this._checkTimeOver();
-    this._checkMeeting();
-    //this._spriteIterater();
-    
+    //this._checkArrival();
+    //this._checkTimeOver();
+    //this._checkMeeting();
+
+    this.gameFrame ++;
+    let position = Math.floor(this.gameFrame / this.staggerFrames) % 5;
+    this.frameX = spriteWidth * position;
+
     window.requestAnimationFrame(() => this._update());
   }
 
   start() {
     this._update();
     this.clock._createClock();
-    this.avatar._autoWalk();
+    //this.avatar._autoWalk();
     this._generateMates();
+    this._assignControls();
   }
 
 }
