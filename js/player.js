@@ -1,5 +1,5 @@
-const spriteWidth = 55.8; //one sprite, not the sprite sheet
-const spriteHeight = 72.75; //one sprite, not the sprite sheet
+const spriteWidth = 84; //one sprite, not the sprite sheet
+const spriteHeight = 109; //one sprite, not the sprite sheet
 // noha 4 ways = 279 x 291 // one noha = 55.8 x 72.75
 let avatarX = this.d_x;
 let avatarY = this.d_y;
@@ -60,40 +60,40 @@ class Player {
 
           if (this.curInterval != 0) {
             clearInterval(this.curInterval)
-            this.curInterval = setInterval (()=>this.autoLeft(), 2)
+            this.curInterval = setInterval (()=>this.autoLeft(), 3)
           }
           else {
-            this.curInterval = setInterval (()=>this.autoLeft(), 2)
+            this.curInterval = setInterval (()=>this.autoLeft(), 3)
           }
         break;
 
         case 'ArrowRight':
           if (this.curInterval != 0) {
             clearInterval(this.curInterval)
-            this.curInterval = setInterval (()=>this.autoRight(), 2)
+            this.curInterval = setInterval (()=>this.autoRight(), 3)
           }
           else {
-            this.curInterval = setInterval (()=>this.autoRight(), 2)
+            this.curInterval = setInterval (()=>this.autoRight(), 3)
           }
           break;
 
         case 'ArrowUp':
           if (this.curInterval != 0) {
             clearInterval(this.curInterval)
-            this.curInterval = setInterval (()=>this.autoUp(), 2)
+            this.curInterval = setInterval (()=>this.autoUp(), 3)
           }
           else {
-            this.curInterval = setInterval (()=>this.autoUp(), 2)
+            this.curInterval = setInterval (()=>this.autoUp(), 3)
           }
           break;
 
         case 'ArrowDown':
           if (this.curInterval != 0) {
             clearInterval(this.curInterval)
-            this.curInterval = setInterval (()=>this.autoDown(), 2)
+            this.curInterval = setInterval (()=>this.autoDown(), 3)
           }
           else {
-            this.curInterval = setInterval (()=>this.autoDown(), 2)
+            this.curInterval = setInterval (()=>this.autoDown(), 3)
           }
           break;
 

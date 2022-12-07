@@ -22,7 +22,7 @@ h1 {
   padding: 20px;
   margin-bottom: 80px;
   text-shadow: black 4px 4px 4px;
-  box-shadow: rgb(0, 0, 0, 0.3) 3px 3px 3px;
+  box-shadow: rgb(0, 0, 0, 0.4) 3px 3px 3px;
   display: inline-block;
 
 }
@@ -105,26 +105,6 @@ p {
   background-color: #EFF211;
 }
 
-canvas {
-  border: 1px solid black;
-  display: block;
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: 50px;
-  background-image: url('../img/floor.PNG');
-  background-size: 150px;
-}
-
-/* Auxiliar classes */
-
-.hidden {
-  display: none;
-}
-
-.shown {
-  display: flex;
-}
-
 button {
   width: 150PX;
   height: 50px;
@@ -138,3 +118,19 @@ button {
   box-shadow: rgb(0, 0, 0, 0.3) 3px 3px 3px;
 }
 
+canvas {
+  border: 1px solid black;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  background-image: url('../img/classroom\ entrance.png');
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: flex;
+}

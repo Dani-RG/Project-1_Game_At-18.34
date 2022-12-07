@@ -1,13 +1,13 @@
 let frameX = 0; //0-4max
 let frameY = 0; //0-3max
 let gameFrame = 0;
-let staggerFrames = 6;
+let staggerFrames = 15;
 
 class Game{
   constructor(ctx) {
     this.ctx = ctx;
     this.avatar = new Player(); // rightX downY corner = 900, 500
-    this.door = new Door(200, 150, 50, 80);
+    this.door = new Door(145, 40, 79, 128);
     this.clock = new Clock(100, 40);
     this.mates = [];
     this._generateInterval = null;
@@ -135,8 +135,8 @@ class Game{
     this._drawMates();
     //this._drawScore();
     this._checkArrival();
-    this._checkTimeOver();
-    this._checkMeeting();
+    //this._checkTimeOver();
+    //this._checkMeeting();
     gameFrame ++;
     let position = Math.floor(gameFrame / staggerFrames) % 5;
     frameX = spriteWidth * position;

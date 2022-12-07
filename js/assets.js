@@ -1,10 +1,10 @@
 //Avatar
 const avatar = new Image();
-avatar.src = '../img/Alex Noah 4 ways c.u 25x20.png';
+avatar.src = '../img/Alex Noah 4 ways X1.5.png';
 
 // Door
 const door = new Image();
-door.src = '../img/glass door.png';
+door.src = '../img/door.png';
 
 // Mates
 const mate1 = new Image();

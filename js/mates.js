@@ -8,15 +8,15 @@ class Mate {
         this.appearInterval = undefined;
     }
 
-    /*_assignPosition(avatarX, avatarY) {
-        this.x = Math.floor(Math.random() * 500);
-        this.y = Math.floor(Math.random() * 300);
-    }*/
+    _assignPosition() {
+        this.x = Math.floor(Math.random() * 600);
+        this.y = Math.floor(Math.random() * 350);
+    }
 
-    _assignPosition(avatarX, avatarY) {
+    /*_assignPosition(avatarX, avatarY) {
         this.x = Math.floor(Math.random() * avatarX -70);
         this.y = Math.floor(Math.random() * avatarY-70);
-    }
+    }*/
 
     _assignImage() {
         this.image = matesImages[Math.floor(Math.random() * matesImages.length)];
@@ -44,7 +44,7 @@ class Mate {
                 this.y = this.y - 1;
             }
 
-        }, 20)
+        }, 15)
     }
 }
 
