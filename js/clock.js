@@ -2,8 +2,8 @@ class Clock {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.time = 'READY!';
-        this.minutes = this._randomMinute(25, 30);
+        this.time = 'ready!';
+        this.minutes = this._randomMinute(25, 28);
         this.intervalID = null;
         //font size desde el html definiendo su div y 
         //cogiendolo con document.??

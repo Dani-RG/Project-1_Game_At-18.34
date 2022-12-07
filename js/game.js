@@ -92,6 +92,7 @@ class Game{
         this.canvas.classList.add('hidden');
         this.clock._stopClock();
         this.textClock.classList.add('hidden');
+        this.textClock.style = 'display: none';
         //this.score ++;
         this.avatar._hide();
     }
@@ -110,6 +111,7 @@ class Game{
         this.canvas.style = 'display: none';
         this.canvas.classList.add('hidden');
         this.textClock.classList.add('hidden');
+        this.textClock.style = 'display: none';
     }
   }
 
@@ -120,6 +122,7 @@ class Game{
       this.canvas.style = 'display: none';
       this.canvas.classList.add('hidden');
       this.textClock.classList.add('hidden');
+      this.textClock.style = 'display: none';
     }
   }
 
@@ -135,8 +138,8 @@ class Game{
     this._drawMates();
     //this._drawScore();
     this._checkArrival();
-    //this._checkTimeOver();
-    //this._checkMeeting();
+    this._checkTimeOver();
+    this._checkMeeting();
     gameFrame ++;
     let position = Math.floor(gameFrame / staggerFrames) % 5;
     frameX = spriteWidth * position;
@@ -148,6 +151,7 @@ class Game{
     this.clock._createClock();
     this.avatar._autoWalk();
     this._generateMates();
+    this.textClock.style = 'display: flex';
   }
 
 }

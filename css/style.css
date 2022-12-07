@@ -63,7 +63,20 @@ p {
   flex-wrap: wrap;
 }
 
-/* Basic styles, change according to your style */
+#text-clock {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  border: 3px solid #F46042;
+  border-radius: 50%;
+  margin: 1.5% 47.5% 0%; 
+  background-color: #32C3FF;
+  text-shadow: rgb(25, 33, 41) 2px 2px 2px;
+  box-shadow: rgb(0, 0, 0, 0.8) 0px 6px 5px;
+  display: inline-block;
+  padding: 40px 25px ;
+  display: none;
+}
 
 #welcome-page {
   height: 720px;

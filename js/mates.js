@@ -2,8 +2,8 @@ class Mate {
     constructor() {
         this.x = null;
         this.y = null;
-        this.width = 40;
-        this.height = 70;
+        this.width = 31*1.5;
+        this.height = 59*1.5;
         this.image = null;
         this.appearInterval = undefined;
     }
