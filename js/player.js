@@ -1,6 +1,8 @@
 const spriteWidth = 55.8; //one sprite, not the sprite sheet
 const spriteHeight = 72.75; //one sprite, not the sprite sheet
 // noha 4 ways = 279 x 291 // one noha = 55.8 x 72.75
+let avatarX = this.d_x;
+let avatarY = this.d_y;
 
 class Player {
   constructor() {
@@ -11,48 +13,17 @@ class Player {
     this.s_width = spriteWidth;
     this.s_height = spriteHeight;
     //DESTINATION ARGUMENTS:
-    this.d_x = 0;
-    this.d_y = 0;
+    this.d_x = 1100;
+    this.d_y = 560;
     this.d_width = spriteWidth;
     this.d_height = spriteHeight;
-    //this.curInterval = null;
+    this.curInterval = null;
   }
-
-  /*moveRight() {
-    this.d_x = this.d_x + 25;
-    if (this.d_x > 1000) {
-      this.d_x = 0 - this.d_width;
-    }
-  }
-
-  moveLeft() {
-    this.d_x = this.d_x - 25;
-    if (this.d_x + this.d_width < 0) {
-      this.d_x = 1000;
-    }
-  }
-
-
-  moveUp() {
-      this.d_y = this.d_y - 25;
-      if (this.d_y + this.d_height < 0) {
-          this.d_y = 600;
-      }
-  }
-
-  moveDown() {
-      this.d_y = this.d_y + 25;
-      if (this.d_y > 600) {
-          this.d_y = 0 - this.d_height;
-      }
-  }
-
-}*/
 
   autoRight() {
     frameY = 3;
     this.d_x = this.d_x + 1;
-    if (this.d_x > 1000) {
+    if (this.d_x > 1280) {
       this.d_x = 0 - this.d_width;
     }
   }
@@ -61,7 +32,7 @@ class Player {
     frameY = 1;
     this.d_x = this.d_x - 1;
     if (this.d_x + this.d_width < 0) {
-      this.d_x = 1000;
+      this.d_x = 1280;
     }
   }
 
@@ -69,14 +40,14 @@ class Player {
     frameY = 0;
     this.d_y = this.d_y - 1;
     if (this.d_y + this.d_height < 0) {
-        this.d_y = 600;
+        this.d_y = 720;
     }
   }
 
   autoDown() {
     frameY = 2;
     this.d_y = this.d_y + 1;
-    if (this.d_y > 600) {
+    if (this.d_y > 720) {
         this.d_y = 0 - this.d_height;
     }
   }

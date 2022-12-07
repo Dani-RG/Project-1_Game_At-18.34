@@ -12,18 +12,29 @@
   <div id="welcome-page">
     <main>
       <h1>At 18:34!</h1>
-      <h2>Description:</h2>
-      <p>The game will consist of helping your friend from Ironhack 
-        to get to the classroom at exactly 18:34<br>  
-        So you as the player can support him to cross the door at the time described, 
-        not a minute before, not a minute after!<br>
-        <br>
-        Keep in mind, the minutes in the clock pass as fast as seconds!
-      </p>
-      <h2>Instructions:</h2>
-      <p>Your Ironfriend moves forward by itself 
-          so you can only indicates him the directions with your keyboard arrows.
-      </p>
+      
+      <section id="text-intro">
+        <div>
+          <article class="card-box">
+            <h2>Description:</h2>
+            <p>The game consist on helping your friend from Ironhack to get to the classroom at exactly 18:34
+              <br>
+              <br>
+              Remember, not a minute before and not a minute after!
+            </p>
+          </article>
+
+          <article class="card-box">
+            <h2>Instructions:</h2>
+            <p>Your Ironfriend moves forward by itself so you can only indicates him the directions with your keyboard arrows.
+                <br>
+                <br>
+                Keep in mind, the minutes in the clock pass as fast as seconds!
+            </p>
+          </article>
+        </div>
+      </section>
+
       <button id="start">Start</button>
     </main>
   </div>
@@ -38,26 +49,22 @@
   </div>
   -->
 
-  <div id="win-page">
+  <div class="end-page" id="win-page">
     <h1>That's it!</h1>
     <button id="new-round">New Round</button>
   </div>
 
-  <div id="lose-page"> 
-    <main>
-      <h1>Too late!</h1>
-      <button id="try-again">Try Again</button>
-    </main>
+  <div class="end-page" id="lose-page">
+    <h1>Too late!</h1>
+    <button id="try-again">Try Again</button>
   </div>
 
-  <div id="second-lose-page"> 
-    <main>
-      <h1>Too early!</h1>
-      <button id="second-try-again">Try Again</button>
-    </main>
+  <div class="end-page" id="second-lose-page">
+    <h1>Too early!</h1>
+    <button id="second-try-again">Try Again</button>
   </div>
 
-  <canvas id="canvas" width="1000" height="600" class="hidden"></canvas>
+  <canvas id="canvas" width="1280" height="720" class="hidden"></canvas>
 
   <script src="js/assets.js"></script>
   <script src="js/player.js"></script>

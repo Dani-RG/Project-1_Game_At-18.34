@@ -4,10 +4,10 @@ let gameFrame = 0;
 let staggerFrames = 6;
 
 class Game{
-  constructor(context) {
-    this.ctx = context;
+  constructor(ctx) {
+    this.ctx = ctx;
     this.avatar = new Player(); // rightX downY corner = 900, 500
-    this.door = new Door(220, 110, 60, 100);
+    this.door = new Door(200, 150, 50, 80);
     this.clock = new Clock(100, 40);
     this.mates = [];
     this._generateInterval = null;
@@ -35,8 +35,8 @@ class Game{
     this.generateInterval = setInterval(() => {
       const newMate = new Mate();
       newMate._assignImage();
-      //newMate._assignPosition(this.avatar.d_x, this.avatar.d_y)
-      newMate._assignPosition(1000, 600);
+      newMate._assignPosition(this.avatar.d_x, this.avatar.d_y)
+      //newMate._assignPosition(1000, 600);
       newMate._mateAppear();
       this.mates.push(newMate);
     }, 700)
@@ -89,6 +89,7 @@ class Game{
       {
         this.winPage.style = 'display: flex';
         this.canvas.style = 'display: none';
+        this.canvas.classList.add('hidden');
         this.clock._stopClock();
         this.textClock.classList.add('hidden');
         //this.score ++;
@@ -107,6 +108,7 @@ class Game{
         this.clock._stopClock()
         this.secondLosePage.style = 'display: flex';
         this.canvas.style = 'display: none';
+        this.canvas.classList.add('hidden');
         this.textClock.classList.add('hidden');
     }
   }
@@ -116,14 +118,13 @@ class Game{
       this.clock._stopClock()
       this.losePage.style = 'display: flex';
       this.canvas.style = 'display: none';
+      this.canvas.classList.add('hidden');
       this.textClock.classList.add('hidden');
-      //set values by default
-      // RESET CANVAS
     }
   }
 
   _cleanCanvas() {
-    this.ctx.clearRect(0, 0, 1000, 600);
+    this.ctx.clearRect(0, 0, 1280, 720);
   }
 
   _update() {

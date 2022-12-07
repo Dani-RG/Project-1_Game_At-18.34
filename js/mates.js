@@ -8,15 +8,15 @@ class Mate {
         this.appearInterval = undefined;
     }
 
-    _assignPosition(avatarX, avatarY) {
+    /*_assignPosition(avatarX, avatarY) {
         this.x = Math.floor(Math.random() * 500);
         this.y = Math.floor(Math.random() * 300);
-    }
-
-    /*_assignPosition(avatarX, avatarY) {
-        this.x = Math.floor(Math.random() * avatarX-70);
-        this.y = Math.floor(Math.random() * avatarY-70);
     }*/
+
+    _assignPosition(avatarX, avatarY) {
+        this.x = Math.floor(Math.random() * avatarX -70);
+        this.y = Math.floor(Math.random() * avatarY-70);
+    }
 
     _assignImage() {
         this.image = matesImages[Math.floor(Math.random() * matesImages.length)];
@@ -24,7 +24,7 @@ class Mate {
 
     _mateAppear() {
         this.appearInterval = setInterval(() => {
-            if (this.x > 1000) {
+            if (this.x > 1280 || this.y > 720) {
                 clearInterval(this.appearInterval);
             }
 

@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Roboto:100,300,700');
+
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Roboto Condensed';
 }
 
 body {
@@ -9,32 +11,63 @@ body {
 }
 
 h1 {
+  font-size: 45px;
   color: white;
-  background-color: rgb(25, 33, 41);
+  background-color: rgb(30, 39, 49);
   border-style: solid;
-  border-width: 3px;
-  padding: 5px;
-  /*border-color: white;*/
-  /*width: 500px;*/
+  border-width: 4px;
+  border-color: #F46042;
+  border-top-left-radius : 30px;
+  border-bottom-right-radius: 30px;
+  padding: 20px;
   margin-bottom: 80px;
+  text-shadow: black 4px 4px 4px;
+  box-shadow: rgb(0, 0, 0, 0.3) 3px 3px 3px;
+  display: inline-block;
+
 }
 
 h2 {
+  font-size: 30px;
   color: white;
   margin-bottom: 20px;
+  text-shadow: rgb(25, 33, 41, 0.8) 2px 3px 3px;
 }
 
 p {
-  color: rgb(25, 33, 41);
+  font-size: 20px;
+  color: white;
   width: 700px;
-  margin-bottom: 50px;
+  text-shadow: rgb(25, 33, 41) 1px 1px 1px;
+}
+
+.card-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  border: 2px solid #EEE;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 10px 0 #EEE;
+  margin: 0px 64px 60px 64px;
+  padding: 40px;
+  width: 40%;
+  background-color: #65caf2;
+}
+
+#text-intro > div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 /* Basic styles, change according to your style */
 
 #welcome-page {
-  height: 600px;
-  width: 1000px;
+  height: 720px;
+  width: 1280px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,9 +79,9 @@ p {
   background-color: #32C3FF;
 }
 
-#win-page {
-  height: 600px;
-  width: 1000px;
+.end-page {
+  width: 1280px;
+  height: 720px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,48 +90,19 @@ p {
   margin: 0 auto;
   border: 1px solid black;
   margin-top: 30px;
-  /* CONSIDER PUT DEGRADETED COLOURS OR CHANGING COLOR */
+  display: none;
+}
+
+#win-page {
   background-color: #05F2DB;
 }
 
-#win-page {
-  display: none;
-}
-
 #lose-page {
-  height: 600px;
-  width: 1000px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  margin: 0 auto;
-  border: 1px solid black;
-  margin-top: 30px;
   background-color: #F29D1D;
 }
 
-#lose-page {
-  display: none;
-}
-
 #second-lose-page {
-  height: 600px;
-  width: 1000px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  margin: 0 auto;
-  border: 1px solid black;
-  margin-top: 30px;
   background-color: #EFF211;
-}
-
-#second-lose-page {
-  display: none;
 }
 
 canvas {
@@ -122,7 +126,15 @@ canvas {
 }
 
 button {
-  width: 120PX;
+  width: 150PX;
   height: 50px;
+  font-size: 25px;
+  color: white;
+  text-shadow: rgb(57, 29, 29, 0.7) 2px 2px 2px;
+  border-width: 2px;
+  border-radius: 7px;
+  border-color: white;
+  background-color: #F46042;
+  box-shadow: rgb(0, 0, 0, 0.3) 3px 3px 3px;
 }
 
