@@ -24,29 +24,30 @@ const spriteHeight = 72.75; //one sprite, not the sprite sheet
 // noha 4 ways = 279 x 291 // one noha = 55.8 x 72.75
 
 class Player {
-  constructor(s_x, s_y, s_width, s_height, d_x, d_y, d_width, d_height) {
+  //constructor(s_x, s_y, s_width, s_height, d_x, d_y, d_width, d_height) {
+  constructor() {
     this.image = avatar;
     //SOURCE ARGUMENTS:
-    this.s_x = s_x;
-    this.s_y = s_y;
-    this.s_width = s_width;
-    this.s_height = s_height;
+    this.s_x = 0;
+    this.s_y = 0;
+    this.s_width = spriteWidth;
+    this.s_height = spriteHeight;
     //DESTINATION ARGUMENTS:
-    this.d_x = d_x;
-    this.d_y = d_y;
-    this.d_width = d_width;
-    this.d_height = d_height;
+    this.d_x = 0;
+    this.d_y = 0;
+    this.d_width = spriteWidth;
+    this.d_height = spriteHeight;
     //this.curInterval = null;
   }
 
   moveRight() {
     this.d_x = this.d_x + 25;
     console.log("arrow");
+    console.log(this.d_x);
     if (this.d_x > 1000) {
       this.d_x = 0 - this.d_width;
     }
   }
-
 
   moveLeft() {
     this.d_x = this.d_x - 25;

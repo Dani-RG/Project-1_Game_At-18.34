@@ -34,7 +34,7 @@ class Game{
     //////this.ctx.drawImage(this.avatar.image, this.avatar.x, this.avatar.y, this.avatar.width, this.avatar.height);
     ////this.ctx.drawImage(this.avatar.image, this.avatar.s_x, this.avatar.s_y, this.avatar.s_width, this.avatar.s_height, this.avatar.d_x, this.avatar.d_y, this.avatar.d_width, this.avatar.d_height);
     //this.ctx.drawImage(this.avatar.image, this.frameX * spriteWidth, this.frameY * spriteHeight, spriteWidth, spriteHeight, 900, 500, spriteWidth, spriteHeight);
-    this.ctx.drawImage(this.avatar.image, this.frameX, this.frameY * spriteHeight, spriteWidth, spriteHeight, 900, 500, spriteWidth, spriteHeight);
+    this.ctx.drawImage(this.avatar.image, this.frameX, this.frameY * spriteHeight, spriteWidth, spriteHeight, this.avatar.d_x, this.avatar.d_y, spriteWidth, spriteHeight);
   }
 
   _assignControls() {
