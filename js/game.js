@@ -1,12 +1,12 @@
-let frameX = 0; //0-4max
-let frameY = 0; //0-3max
+let frameX = 0;
+let frameY = 0;
 let gameFrame = 0;
 let staggerFrames = 15;
 
 class Game{
   constructor(ctx) {
     this.ctx = ctx;
-    this.avatar = new Player(); // rightX downY corner = 900, 500
+    this.avatar = new Player();
     this.door = new Door(145, 40, 79, 128);
     this.clock = new Clock(100, 40);
     this.mates = [];
@@ -16,11 +16,7 @@ class Game{
     this.winPage = document.getElementById('win-page');
     this.losePage = document.getElementById('lose-page');
     this.secondLosePage = document.getElementById('second-lose-page');
-    //this.scoreText = document.getElementById('score-text');
-    //this.score = 0;
   }
-
-  //function set values by default
 
   _drawDoor() {
     this.ctx.drawImage(this.door.image, this.door.x, this.door.y, this.door.width, this.door.height);
@@ -36,7 +32,6 @@ class Game{
       const newMate = new Mate();
       newMate._assignImage();
       newMate._assignPosition(this.avatar.d_x, this.avatar.d_y)
-      //newMate._assignPosition(1000, 600);
       newMate._mateAppear();
       this.mates.push(newMate);
     }, 800)
@@ -47,9 +42,6 @@ class Game{
       this.ctx.drawImage(elem.image, elem.x, elem.y, elem.width, elem.height);
     })
   }
-
-  // GENERATE CLASSROOM IN RANDOM POSITION
-  //  ON THIRD WIN, ALERT "GET READY, IT'S LAB DAY!" AND EVERITHING TURNS UP SIDE DOWN, DOOR, AVATAR AND CONTROLS.
 
   _checkMeeting() {
     this.mates.forEach((mate) => {
@@ -70,10 +62,6 @@ class Game{
     this.textClock.innerHTML = this.clock.time;
   }
 
-  /*_drawScore() {
-    this.scoreText.innerHTML = `Rounds = ${this.score}`;
-  }*/
-
   _checkArrival() {
     if (
       (
@@ -93,7 +81,6 @@ class Game{
         this.clock._stopClock();
         this.textClock.classList.add('hidden');
         this.textClock.style = 'display: none';
-        //this.score ++;
         this.avatar._hide();
     }
     else if (
@@ -126,7 +113,6 @@ class Game{
     }
   }
 
-
   _cleanCanvas() {
     this.ctx.clearRect(0, 0, 1280, 720);
   }
@@ -137,7 +123,6 @@ class Game{
     this._drawAvatar();
     this._drawClock();
     this._drawMates();
-    //this._drawScore();
     this._checkArrival();
     this._checkTimeOver();
     this._checkMeeting();
@@ -156,4 +141,3 @@ class Game{
   }
 
 }
-

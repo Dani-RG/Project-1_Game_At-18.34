@@ -17,16 +17,6 @@ class Mate {
         }
     }
 
-    /*    _assignPosition() {
-        this.x = Math.floor(Math.random() * 1050);
-        this.y = Math.floor(Math.random() * 600);
-    }*/
-
-    /*_assignPosition(avatarX, avatarY) {
-        this.x = Math.floor(Math.random() * avatarX -70);
-        this.y = Math.floor(Math.random() * avatarY-70);
-    }*/
-
     _assignImage() {
         this.image = matesImages[Math.floor(Math.random() * matesImages.length)];
     }
@@ -56,4 +46,3 @@ class Mate {
         }, 15)
     }
 }
-
