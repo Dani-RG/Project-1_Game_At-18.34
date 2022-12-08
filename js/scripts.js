@@ -13,7 +13,13 @@ window.onload = function () {
   const tryAgainButton = document.getElementById('try-again');
   const secondTryAgainButton = document.getElementById('second-try-again');
 
-  function play() {
+  function playMusic() {
+    music.play();
+  }
+
+  playMusic()
+
+  function playGame() {
     welcomePage.style = 'display: none';
     winPage.style = 'display: none';
     losePage.style = 'display: none';
@@ -26,7 +32,7 @@ window.onload = function () {
   }
 
   startButton.onclick = function () {
-    play();
+    playGame();
   }
 
   newRoundButton.addEventListener('click', function() {

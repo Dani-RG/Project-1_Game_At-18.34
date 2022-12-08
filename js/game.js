@@ -39,7 +39,7 @@ class Game{
       //newMate._assignPosition(1000, 600);
       newMate._mateAppear();
       this.mates.push(newMate);
-    }, 700)
+    }, 800)
   }
 
   _drawMates() {
@@ -125,6 +125,7 @@ class Game{
       this.textClock.style = 'display: none';
     }
   }
+
 
   _cleanCanvas() {
     this.ctx.clearRect(0, 0, 1280, 720);

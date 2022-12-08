@@ -20,3 +20,5 @@ const mate4 = new Image();
 mate4.src = '../img/Luna Noah up.png';
 
 const matesImages = [mate1, mate2, mate3, mate4];
+
+const music = new Audio('../audio/night time - fetch focus.mp3');

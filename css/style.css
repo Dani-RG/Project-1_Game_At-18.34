@@ -65,16 +65,13 @@ p {
 
 #text-clock {
   color: white;
-  font-size: 30px;
+  font-size: 45px;
   text-align: center;
-  border: 3px solid #F46042;
-  border-radius: 50%;
-  margin: 1.5% 47.5% 0%; 
-  background-color: #32C3FF;
-  text-shadow: rgb(25, 33, 41) 2px 2px 2px;
-  box-shadow: rgb(0, 0, 0, 0.8) 0px 6px 5px;
+  margin-top: 30px;
+  text-shadow: rgba(255, 255, 255, 0.9) 0px 1px 7px;
+  display: flex;
+  flex-direction: column;
   display: inline-block;
-  padding: 40px 25px ;
   display: none;
 }
 

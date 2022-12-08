@@ -2,16 +2,25 @@ class Mate {
     constructor() {
         this.x = null;
         this.y = null;
-        this.width = 31*1.5;
-        this.height = 59*1.5;
+        this.width = 46.5;
+        this.height = 88.5;
         this.image = null;
         this.appearInterval = undefined;
+        this.limit = 0;
     }
 
     _assignPosition() {
-        this.x = Math.floor(Math.random() * 600);
-        this.y = Math.floor(Math.random() * 350);
+        this.x = Math.floor(Math.random() * 1050);
+        this.y = Math.floor(Math.random() * 600);
+        if (this.y < 140) {
+            this.y = 140;
+        }
     }
+
+    /*    _assignPosition() {
+        this.x = Math.floor(Math.random() * 1050);
+        this.y = Math.floor(Math.random() * 600);
+    }*/
 
     /*_assignPosition(avatarX, avatarY) {
         this.x = Math.floor(Math.random() * avatarX -70);
@@ -41,7 +50,7 @@ class Mate {
             }
 
             if (this.image === matesImages[3]) {
-                this.y = this.y - 1;
+                this.y = this.y + 1;
             }
 
         }, 15)
