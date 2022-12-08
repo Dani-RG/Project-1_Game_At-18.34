@@ -1,6 +1,4 @@
-# Game name
-
-At 18:34!
+# Game: At 18:34!
 
 <img src="./img/Game 18.34 screenshot.png">
 
