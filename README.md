@@ -42,5 +42,5 @@ Minimum user stories:
 
 ## Useful links
 
-- [https://docs.google.com/presentation/d/1lETyle4kk4kF9TGLjVBRKw0_gSYu4hsb3OhakzBg2XA/edit#slide=id.g1f87997393_0_782]()
-- [https://dani-rg.github.io/Project-1_Game_At-18.34/]()
+- [Presentation slides](https://docs.google.com/presentation/d/1lETyle4kk4kF9TGLjVBRKw0_gSYu4hsb3OhakzBg2XA/edit#slide=id.g1f87997393_0_782)
+- [Deployed game](https://dani-rg.github.io/Project-1_Game_At-18.34/)
